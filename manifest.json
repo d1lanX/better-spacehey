@@ -1,0 +1,24 @@
+{
+    "name": "better spacehey",
+    "description": "improvements to spacehey.com",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "src/popup.html",
+        "default_icon": "logo.png"
+    },
+    "permissions": [
+        "storage"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://blog.spacehey.com/edit*"
+            ],
+            "js": [
+                "src/scripts/browser-polyfill.min.js",
+                "src/scripts/blog.js"
+            ]
+        }
+    ]
+}
