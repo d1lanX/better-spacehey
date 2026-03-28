@@ -5,7 +5,7 @@ window.addEventListener('load', () => {
         subject: '',
         category: '',
         content: '',
-        privacy: '',
+        privacy: 'public',
         comments: 'enabled',
         startedAt: Date.now(),
     };
