@@ -1,5 +1,6 @@
 window.addEventListener('load', () => {
     let drafts = [];
+    let autosaveEnabled = true;
 
     let currentBlog = {
         subject: '',
@@ -35,6 +36,8 @@ window.addEventListener('load', () => {
     }
 
     async function syncStorage(fromDelete = false) {
+        if (!autosaveEnabled && !fromDelete) return;
+
         const index = drafts.findIndex(
             (d) => d.startedAt === currentBlog.startedAt,
         );
@@ -135,8 +138,24 @@ window.addEventListener('load', () => {
     }
 
     async function init() {
+        const settings = await browser.storage.sync.get({ autosave_enabled: true });
+        autosaveEnabled = settings.autosave_enabled;
+
         const res = await browser.storage.sync.get('drafts');
         drafts = res.drafts || [];
         renderDrafts(drafts);
+        toggleDraftsUI(autosaveEnabled);
+
+        browser.storage.onChanged.addListener((changes, area) => {
+            if (area === 'sync' && 'autosave_enabled' in changes) {
+                autosaveEnabled = changes.autosave_enabled.newValue;
+                toggleDraftsUI(autosaveEnabled);
+            }
+        });
+    }
+
+    function toggleDraftsUI(show) {
+        const container = getDraftsContainer();
+        container.style.display = show ? 'block' : 'none';
     }
 });

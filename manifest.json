@@ -24,6 +24,18 @@
                 "src/scripts/browser-polyfill.min.js",
                 "src/scripts/blog.js"
             ]
+        },
+        {
+            "matches": [
+                "https://im.spacehey.com/*"
+            ],
+            "js": [
+                "src/scripts/browser-polyfill.min.js",
+                "src/scripts/im.js"
+            ],
+            "css": [
+                "src/styles/im.css"
+            ]
         }
     ]
 }

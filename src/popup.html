@@ -23,32 +23,55 @@
             li {
                 padding: 0;
             }
+            i {
+                color: gray;
+            }
         </style>
     </head>
     <body>
-        <body>
-            <p class="title">
-                <b>better spacehey</b>
-                <br />
-                config
-            </p>
-            <main>
-                <ul>
-                    <li title="configurable in the future!">
-                        <p inert>
-                            <label for="auto-save">auto-save blogs</label>
-                            <input
-                                type="checkbox"
-                                name="auto-save"
-                                id="auto-save"
-                            />
-                        </p>
-                    </li>
-                    <li>
-                        <p><i>more coming soon!</i></p>
-                    </li>
-                </ul>
-            </main>
-        </body>
+        <p class="title">
+            <b>better spacehey</b>
+            <br />
+            config
+        </p>
+        <main>
+            <ul>
+                <li>
+                    <p title="allows bypassing the 150 messages limit">
+                        <label for="im-messages">store im messages</label>
+                        <input
+                            type="checkbox"
+                            name="im-messages"
+                            id="im-messages"
+                        />
+                    </p>
+                </li>
+                <li>
+                    <p title="saves your ten last sent messages">
+                        <label for="im-toggle">im redo messages</label>
+                        <input
+                            type="checkbox"
+                            name="im-toggle"
+                            id="im-toggle"
+                        />
+                    </p>
+                </li>
+                <li title="stores drafts from in-progress blogs">
+                    <p>
+                        <label for="auto-save">auto-save blogs</label>
+                        <input
+                            type="checkbox"
+                            name="auto-save"
+                            id="auto-save"
+                        />
+                    </p>
+                </li>
+                <li>
+                    <p><i>more coming soon!</i></p>
+                </li>
+            </ul>
+        </main>
+        <script src="scripts/browser-polyfill.min.js"></script>
+        <script src="scripts/popup.js"></script>
     </body>
 </html>

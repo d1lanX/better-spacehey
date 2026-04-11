@@ -1,0 +1,52 @@
+[popover="auto"] {
+    inset: unset;
+    position: absolute;
+    bottom: calc(anchor(top) + 20px);
+    justify-self: anchor-center;
+    margin: 0;
+    width: 200px;
+    text-align: center;
+    padding: 8px;
+    border-radius: 6px;
+    background: #eee;
+    box-shadow: 1px 1px 3px #999;
+    border: none;
+}
+
+span.counter {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-weight: bold;
+}
+
+button.redo {
+    position: relative;
+}
+
+#last-messages>button {
+    border: 1px dashed #a1a1a1 !important;
+    width: 100%;
+
+    &:hover {
+        background-color: lightgray;
+    }
+}
+
+button.load-more-messages {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+button.load-more-messages:hover {
+    background-color: #e0e0e0;
+    color: #333;
+}
