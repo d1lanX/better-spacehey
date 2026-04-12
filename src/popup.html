@@ -10,6 +10,7 @@
                 background-color: aliceblue;
                 width: 200px;
                 height: 200px;
+                position: relative;
             }
             p.title {
                 background-color: #094cd3;
@@ -23,8 +24,13 @@
             li {
                 padding: 0;
             }
-            i {
+            .grayish {
                 color: gray;
+            }
+            small.grayish {
+                position: absolute;
+                bottom: 0;
+                right: 0;
             }
         </style>
     </head>
@@ -67,9 +73,10 @@
                     </p>
                 </li>
                 <li>
-                    <p><i>more coming soon!</i></p>
+                    <p class="grayish"><i>more coming soon!</i></p>
                 </li>
             </ul>
+            <small class="grayish">v1.04.1</small>
         </main>
         <script src="scripts/browser-polyfill.min.js"></script>
         <script src="scripts/popup.js"></script>

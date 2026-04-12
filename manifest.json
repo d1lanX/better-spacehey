@@ -6,7 +6,7 @@
         "48": "src/icons/icon48.png",
         "128": "src/icons/icon128.png"
     },
-    "version": "1.0",
+    "version": "1.4.1",
     "manifest_version": 3,
     "action": {
         "default_popup": "src/popup.html",

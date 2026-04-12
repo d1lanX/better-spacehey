@@ -44,12 +44,15 @@ window.addEventListener('load', async () => {
         messageCounterElem.innerHTML = chatHistory?.length
             ? chatHistory.length
             : '';
+
+        // Use a non-destructive sort for display (Newest at the top)
+        const displayHistory = [...(chatHistory || [])].sort(
+            (a, b) => a.date - b.date,
+        );
+
         lastMessagesElem.innerHTML =
-            chatHistory
-                ?.sort((a, b) => a.date - b.date)
-                ?.map(
-                    (m) => `<button data-id="${m.date}">${m.message}</button>`,
-                )
+            displayHistory
+                .map((m) => `<button data-id="${m.date}">${m.message}</button>`)
                 .join('<br>') || '';
     }
 
@@ -110,7 +113,20 @@ window.addEventListener('load', async () => {
 
             const storedData = (await browser.storage.sync.get('chat_history'))
                 ?.chat_history;
-            chatHistory = Array.isArray(storedData) ? storedData : [];
+
+            // Validate and clean history (Newest first)
+            chatHistory = Array.isArray(storedData)
+                ? storedData
+                      .filter(
+                          (m) =>
+                              m &&
+                              typeof m.message === 'string' &&
+                              typeof m.date === 'number',
+                      )
+                      .sort((a, b) => a.date - b.date)
+                      .slice(0, 10)
+                : [];
+
             setupUI();
         }
 
